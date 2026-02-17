@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Tutoriel - BMC4 &bull; Better MC [FORGE]</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="../assets/css/main.css" />
+
+		<!-- Polices Modernes -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Icônes Phosphor -->
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
+	</head>
+	<body>
+		<nav class="container">
+			<a href="../" class="logo">
+				<i class="ph-fill ph-cube" style="color: var(--primary)"></i> BMC4
+				<span>SERVER</span>
+			</a>
+			<div class="nav-links">
+				<a href="./" class="btn btn-primary btn-nav">Tutoriel</a>
+			</div>
+		</nav>
+
+		<header class="container hero-mini">
+			<h1>Comment rejoindre le serveur</h1>
+			<p>
+				Suis ce guide étape par étape pour installer le modpack et te connecter
+				à BMC4.
+			</p>
+		</header>
+
+		<section class="container tutorial-section">
+			<div class="step-card">
+				<div class="step-number">1</div>
+				<div class="step-content">
+					<h2>Installer le Launcher CurseForge</h2>
+					<p>
+						Si tu n'as pas encore CurseForge, télécharge-le depuis
+						<a
+							href="https://www.curseforge.com/download/app"
+							target="_blank"
+							class="inline-link"
+						>
+							le site officiel <i class="ph-bold ph-arrow-square-out"></i> </a
+						>. Installe-le et connecte-toi avec ton compte (création gratuite si
+						besoin).
+					</p>
+				</div>
+			</div>
+
+			<div class="step-card">
+				<div class="step-number">2</div>
+				<div class="step-content">
+					<h2>Télécharger le modpack Better MC</h2>
+					<p>
+						Rends-toi sur la page du modpack
+						<a
+							href="https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4"
+							target="_blank"
+							class="inline-link"
+						>
+							Better MC [FORGE] - BMC4
+							<i class="ph-bold ph-arrow-square-out"></i>
+						</a>
+						et clique sur <strong>"Install"</strong> ou télécharge la version
+						<strong>v36+</strong>.
+					</p>
+					<div class="info-box">
+						<i class="ph-fill ph-info"></i>
+						<span
+							>Assure-toi de sélectionner la version
+							<strong>Forge pour Minecraft 1.20.1</strong></span
+						>
+					</div>
+				</div>
+			</div>
+
+			<div class="step-card">
+				<div class="step-number">3</div>
+				<div class="step-content">
+					<h2>Installer et lancer le modpack</h2>
+					<p>
+						Une fois téléchargé, CurseForge va automatiquement installer tous
+						les mods nécessaires. Lance le modpack en cliquant sur
+						<strong>"Play"</strong> dans l'interface CurseForge.
+					</p>
+					<ul class="checklist">
+						<li>
+							<i class="ph-fill ph-check-circle"></i> Attends que tous les mods
+							se chargent (première fois = long)
+						</li>
+						<li>
+							<i class="ph-fill ph-check-circle"></i> Minecraft va se lancer
+							automatiquement
+						</li>
+						<li>
+							<i class="ph-fill ph-check-circle"></i> Si erreur Java : vérifie
+							que tu as Java 17+ installé
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="step-card">
+				<div class="step-number">4</div>
+				<div class="step-content">
+					<h2>Se connecter au serveur BMC4</h2>
+					<p>
+						Dans Minecraft, va dans <strong>"Multijoueur"</strong> puis
+						<strong>"Ajouter un serveur"</strong>.
+					</p>
+
+					<div class="server-box">
+						<div class="server-info-row">
+							<span class="label">Nom du serveur :</span>
+							<span class="value">BMC4 Server (au choix)</span>
+						</div>
+						<div class="server-info-row">
+							<span class="label">Adresse IP :</span>
+							<div class="ip-display-mini" onclick="copyIPTuto()">
+								<span class="ip-code" id="server-ip-tuto">bmc4.minesr.com</span>
+								<span class="copy-label-mini"
+									><i class="ph-bold ph-copy"></i
+								></span>
+							</div>
+						</div>
+					</div>
+
+					<p style="margin-top: 20px">
+						Clique sur <strong>"Terminé"</strong> puis rejoins le serveur.
+					</p>
+
+					<div class="warning-box">
+						<i class="ph-fill ph-warning"></i>
+						<div>
+							<strong>Whitelist Active :</strong> Si tu n'es pas autorisé,
+							contacte un admin sur Discord pour être ajouté à la liste blanche.
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="step-card">
+				<div class="step-number">5</div>
+				<div class="step-content">
+					<h2>Installer Simple Voice Chat (optionnel)</h2>
+					<p>
+						Le mod <strong>Simple Voice Chat</strong> n'est pas inclus par
+						défaut. Pour discuter avec tes amis en audio spatial, tu dois
+						l'installer manuellement.
+					</p>
+
+					<div class="substep">
+						<strong>a) Télécharger le mod</strong>
+						<p style="margin-top: 8px">
+							Rends-toi sur
+							<a
+								href="https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat/files/all?page=1&pageSize=20&version=1.20.1&gameVersionTypeId=1"
+								target="_blank"
+								class="inline-link"
+							>
+								CurseForge - Simple Voice Chat
+								<i class="ph-bold ph-arrow-square-out"></i>
+							</a>
+							et télécharge la version compatible <strong>Forge 1.20.1</strong>.
+						</p>
+					</div>
+
+					<div class="substep">
+						<strong>b) Ajouter le mod à l'instance</strong>
+						<ul class="checklist">
+							<li>
+								<i class="ph-fill ph-folder-open"></i> Ouvre CurseForge et fais
+								clic droit sur l'instance BMC4
+							</li>
+							<li>
+								<i class="ph-fill ph-folder-open"></i> Sélectionne
+								<strong>"Open Folder"</strong> ou
+								<strong>"Ouvrir le dossier"</strong>
+							</li>
+							<li>
+								<i class="ph-fill ph-file-arrow-down"></i> Place le fichier .jar
+								téléchargé dans le dossier <strong>"mods"</strong>
+							</li>
+							<li>
+								<i class="ph-fill ph-arrow-clockwise"></i> Redémarre Minecraft
+							</li>
+						</ul>
+					</div>
+
+					<div class="substep">
+						<strong>c) Configurer le Voice Chat</strong>
+						<p style="margin-top: 8px">
+							Une fois en jeu, appuie sur la touche <strong>V</strong> pour
+							ouvrir les paramètres audio.
+						</p>
+						<ul class="checklist">
+							<li>
+								<i class="ph-fill ph-microphone"></i> Sélectionne ton micro dans
+								les paramètres
+							</li>
+							<li>
+								<i class="ph-fill ph-speaker-high"></i> Ajuste le volume de
+								sortie selon tes préférences
+							</li>
+							<li>
+								<i class="ph-fill ph-broadcast"></i> Appuie sur
+								<strong>Caps Lock</strong> pour parler (par défaut)
+							</li>
+						</ul>
+					</div>
+
+					<div class="info-box" style="margin-top: 16px">
+						<i class="ph-fill ph-info"></i>
+						<span
+							>Tous les joueurs doivent avoir le mod installé pour pouvoir
+							communiquer entre eux.</span
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="container help-section">
+			<div class="help-card">
+				<i
+					class="ph-duotone ph-question"
+					style="font-size: 48px; color: var(--primary)"
+				></i>
+				<h3>Besoin d'aide ?</h3>
+				<p>
+					Si tu rencontres un problème ou une erreur, rejoins notre Discord pour
+					obtenir de l'aide.
+				</p>
+				<a
+					href="https://discord.gg/MhjRkFfU5H"
+					target="_blank"
+					class="btn btn-primary"
+				>
+					<i class="ph-bold ph-discord-logo"></i>
+					Rejoindre Discord
+				</a>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<p>&copy; 2026 BMC4 Server. Design inspiré par les meilleurs.</p>
+			</div>
+		</footer>
+
+		<div id="toast">
+			<i class="ph-fill ph-check-circle"></i> IP copiée dans le presse-papier !
+		</div>
+
+		<script>
+			function copyIPTuto() {
+				var ipText = document.getElementById("server-ip-tuto").innerText;
+				navigator.clipboard.writeText(ipText).then(function () {
+					var x = document.getElementById("toast");
+					x.className = "show";
+					setTimeout(function () {
+						x.className = x.className.replace("show", "");
+					}, 3000);
+				});
+			}
+		</script>
+	</body>
+</html>

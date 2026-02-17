@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<title>BMC4 &bull; Better MC [FORGE]</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="./assets/css/main.css" />
+
+		<!-- Polices Modernes -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Icônes Phosphor -->
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
+	</head>
+	<body>
+		<!-- <nav class="container">
+			<div class="logo">
+				<i class="ph-fill ph-cube" style="color: var(--primary)"></i> BMC4
+				<span>SERVER</span>
+			</div>
+			<div class="nav-links">
+				<a href="./" class="nav-link active">Accueil</a>
+				<a href="./comment-rejoindre/" class="nav-link">Tutoriel</a>
+			</div>
+		</nav> -->
+		<nav class="container">
+			<a href="./" class="logo">
+				<i class="ph-fill ph-cube" style="color: var(--primary)"></i> BMC4
+				<span>SERVER</span>
+			</a>
+			<div class="nav-links">
+				<a href="./comment-rejoindre/" class="btn btn-primary btn-nav">Tutoriel</a>
+			</div>
+		</nav>
+
+		<header class="container hero">
+			<div class="hero-content">
+				<h1>L'exp&eacute;rience survie <br />ultime & modd&eacute;e.</h1>
+				<p>
+					Rejoins une aventure coop&eacute;rative sur Minecraft 1.20.1 avec le
+					modpack Better MC [FORGE]. Donjons &eacute;piques, biomes infinis et
+					voice chat int&eacute;gr&eacute;.
+				</p>
+
+				<div class="btn-group">
+					<a
+						href="https://www.curseforge.com/minecraft/modpacks/better-mc-forge-bmc4"
+						target="_blank"
+						class="btn btn-primary"
+					>
+						<i class="ph-bold ph-download-simple"></i>
+						T&eacute;l&eacute;charger Modpack
+					</a>
+					<a
+						href="https://discord.gg/MhjRkFfU5H"
+						target="_blank"
+						class="btn btn-secondary"
+					>
+						<i class="ph-bold ph-discord-logo"></i>
+						Rejoindre Discord
+					</a>
+				</div>
+			</div>
+
+			<div class="glass-card">
+				<div class="ip-display" onclick="copyIP()">
+					<span class="ip-code" id="server-ip">bmc4.minesr.com</span>
+					<span class="copy-label"><i class="ph-bold ph-copy"></i> COPIER</span>
+				</div>
+				<ul class="meta-list">
+					<li>
+						<span><i class="ph-fill ph-game-controller"></i> Version</span>
+						<span>1.20.1 (Forge)</span>
+					</li>
+					<li>
+						<span><i class="ph-fill ph-package"></i> Modpack</span>
+						<span>BMC4 v36+</span>
+					</li>
+					<li>
+						<span><i class="ph-fill ph-shield-check"></i> Status</span>
+						<span>Whitelist Active</span>
+					</li>
+					<li>
+						<span><i class="ph-fill ph-users"></i> Slots</span>
+						<span>4 Joueurs</span>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<section class="container features">
+			<div class="feature-box">
+				<div class="icon">
+					<i
+						class="ph-duotone ph-mountains"
+						style="font-size: 32px; color: #8c5ce7"
+					></i>
+				</div>
+				<h3>Exploration Infinie</h3>
+				<p>
+					Red&eacute;couvrez Minecraft avec Biomes O' Plenty, de nouvelles
+					dimensions comme l'Aether et une g&eacute;n&eacute;ration de terrain
+					&eacute;poustouflante.
+				</p>
+			</div>
+			<div class="feature-box">
+				<div class="icon">
+					<i
+						class="ph-duotone ph-sword"
+						style="font-size: 32px; color: #8c5ce7"
+					></i>
+				</div>
+				<h3>Boss & Donjons</h3>
+				<p>
+					Affrontez les boss de L'Ender's Cataclysm et pillez des structures
+					massives. Un d&eacute;fi r&eacute;el pour les v&eacute;t&eacute;rans.
+				</p>
+			</div>
+			<div class="feature-box">
+				<div class="icon">
+					<i
+						class="ph-duotone ph-microphone-stage"
+						style="font-size: 32px; color: #8c5ce7"
+					></i>
+				</div>
+				<h3>Proximity Chat</h3>
+				<p>
+					Simple Voice Chat est pr&eacute;-install&eacute;. Discutez avec vos
+					amis en jeu avec audio spatialis&eacute;. Appuyez sur V !
+				</p>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<p>&copy; 2026 BMC4 Server. Design inspir&eacute; par les meilleurs.</p>
+			</div>
+		</footer>
+
+		<div id="toast">
+			<i class="ph-fill ph-check-circle"></i> IP copi&eacute;e dans le
+			presse-papier !
+		</div>
+
+		<script>
+			function copyIP() {
+				var ipText = document.getElementById("server-ip").innerText;
+				navigator.clipboard.writeText(ipText).then(function () {
+					var x = document.getElementById("toast");
+					x.className = "show";
+					setTimeout(function () {
+						x.className = x.className.replace("show", "");
+					}, 3000);
+				});
+			}
+		</script>
+	</body>
+</html>
