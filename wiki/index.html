@@ -21,41 +21,223 @@
 		<div class="wiki-container">
 			<!-- SIDEBAR GAUCHE -->
 			<aside class="sidebar">
-				<a href="../index.html" class="back-link">
+				<a href="../" class="back-link">
 					<i class="ph-bold ph-arrow-left"></i> Retour à l'accueil
 				</a>
 
-				<div class="nav-title">Téléportation</div>
+				<div class="nav-title">Essentiels</div>
 				<ul class="nav-list">
-					<li><a href="#tpa" class="active">TPA (Demandes)</a></li>
-					<li><a href="#back">Back & Grave</a></li>
+					<li><a href="#keys" class="active">Touches & Menus</a></li>
+					<li><a href="#voice">Voice Chat</a></li>
 				</ul>
 
-				<div class="nav-title">Homes (Maisons)</div>
+				<div class="nav-title">Protection (FTB)</div>
 				<ul class="nav-list">
-					<li><a href="#sethome">Créer & Gérer</a></li>
-					<li><a href="#share">Partager des Homes</a></li>
+					<li><a href="#claims">Claims & Map</a></li>
+					<li><a href="#teams">Teams (Équipes)</a></li>
+				</ul>
+
+				<div class="nav-title">Téléportation</div>
+				<ul class="nav-list">
+					<li><a href="#tpa">TPA & Requests</a></li>
+					<li><a href="#homes">Homes & Back</a></li>
 				</ul>
 			</aside>
 
 			<!-- CONTENU DROITE -->
 			<main class="content">
 				<h1>Wiki Serveur</h1>
-				<span class="subtitle">Toutes les commandes du mod TPATools.</span>
+				<span class="subtitle"
+					>Commandes et guides pour Better MC [FORGE].</span
+				>
 
-				<!-- TPA -->
+				<!-- TOUCHES & MENUS -->
+				<section id="keys">
+					<h2><i class="ph-duotone ph-keyboard"></i> Touches Utiles (BMC4)</h2>
+					<p style="margin-bottom: 30px; font-style: italic; opacity: 0.8">
+						Le modpack ajoute plusieurs menus importants pour la progression.
+					</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code style="font-size: 1.1rem; padding: 8px 14px">M</code>
+							<span class="tag map">MAP</span>
+						</div>
+						<p class="cmd-desc">
+							Ouvre la carte du monde (FTB Chunks). Permet de voir les claims et
+							les waypoints.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code style="font-size: 1.1rem; padding: 8px 14px">I</code>
+							<span
+								style="
+									font-size: 0.85rem;
+									color: var(--text-muted);
+									margin-left: 10px;
+								"
+								>(ou E + Livre)</span
+							>
+							<span class="tag quests" style="margin-left: auto">QUÊTES</span>
+						</div>
+						<p class="cmd-desc">
+							Ouvre le livre de quêtes (FTB Quests). Suivez-les pour obtenir des
+							récompenses !
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code style="font-size: 1.1rem; padding: 8px 14px">U</code>
+							<span class="tag essential">HISTORIQUE</span>
+						</div>
+						<p class="cmd-desc">
+							Affiche l'historique des joueurs rencontrés (si activé par le
+							serveur).
+						</p>
+					</div>
+				</section>
+
+				<!-- VOICE CHAT -->
+				<section id="voice">
+					<h2><i class="ph-duotone ph-microphone-stage"></i> Voice Chat</h2>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code style="font-size: 1.1rem; padding: 8px 14px">V</code>
+							<span class="tag essential">VOICE</span>
+						</div>
+						<p class="cmd-desc">
+							Ouvre les paramètres du Voice Chat (Micro, Volume, Groupes).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/voicechat invite [joueur]</code>
+							<span class="tag voice">Groupe</span>
+						</div>
+						<p class="cmd-desc">
+							Invite un joueur dans un groupe vocal privé (hors de portée).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/voicechat join [groupe]</code>
+							<span class="tag voice">Groupe</span>
+						</div>
+						<p class="cmd-desc">
+							Rejoint un groupe existant (si on a le mot de passe ou
+							l'invitation).
+						</p>
+					</div>
+				</section>
+
+				<!-- CLAIMS (FTB CHUNKS) -->
+				<section id="claims">
+					<h2>
+						<i class="ph-duotone ph-shield-check"></i> Protection (Claims)
+					</h2>
+					<p>Protégez votre base avec <strong>FTB Chunks</strong>.</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>Clic Gauche (sur la Map)</code>
+							<span class="tag claim">Claim</span>
+						</div>
+						<p class="cmd-desc">
+							Ouvrez la map avec <strong>M</strong>, cliquez sur "Claimed
+							Chunks". Clic Gauche sur un carré pour le revendiquer.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>Shift + Clic Gauche</code>
+							<span class="tag claim">Force Load</span>
+						</div>
+						<p class="cmd-desc">
+							Force le chargement du chunk (vos machines/fermes tourneront même
+							si vous êtes hors ligne).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>Clic Droit</code>
+							<span class="tag claim">Unclaim</span>
+						</div>
+						<p class="cmd-desc">Retire la protection d'un chunk.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/ftbchunks unclaim_all</code>
+							<span class="tag claim">Reset</span>
+						</div>
+						<p class="cmd-desc">Supprime TOUS vos claims d'un coup.</p>
+					</div>
+				</section>
+
+				<!-- TEAMS (FTB TEAMS) -->
+				<section id="teams">
+					<h2><i class="ph-duotone ph-users-three"></i> Équipes (Teams)</h2>
+					<p>Gérez vos alliés pour partager vos claims.</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/ftbteams party create</code>
+							<span class="tag team">Créer</span>
+						</div>
+						<p class="cmd-desc">
+							Crée une nouvelle équipe (Party). Vous en devenez le chef.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/ftbteams party invite [joueur]</code>
+							<span class="tag team">Inviter</span>
+						</div>
+						<p class="cmd-desc">
+							Invite un joueur dans votre équipe. Il aura accès à vos claims !
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/ftbteams party join [joueur]</code>
+							<span class="tag team">Rejoindre</span>
+						</div>
+						<p class="cmd-desc">Accepte une invitation reçue.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/ftbteams party settings</code>
+							<span class="tag team">Options</span>
+						</div>
+						<p class="cmd-desc">
+							Configure les permissions (Tir allié, explosions, etc.).
+						</p>
+					</div>
+				</section>
+
+				<!-- TPA & HOMES -->
 				<section id="tpa">
-					<h2><i class="ph-duotone ph-paper-plane-tilt"></i> Demandes de TP</h2>
-					<p>Pour rejoindre vos amis ou les faire venir à vous.</p>
+					<h2>
+						<i class="ph-duotone ph-paper-plane-tilt"></i> TPA & Téléportation
+					</h2>
 
 					<div class="command-card">
 						<div class="cmd-header">
 							<code>/tpa [joueur]</code>
 							<span class="tag tp">Aller vers</span>
 						</div>
-						<p class="cmd-desc">
-							Envoie une demande pour te téléporter sur un joueur.
-						</p>
+						<p class="cmd-desc">Demande de téléportation vers un joueur.</p>
 					</div>
 
 					<div class="command-card">
@@ -63,36 +245,28 @@
 							<code>/tpahere [joueur]</code>
 							<span class="tag tp">Faire venir</span>
 						</div>
-						<p class="cmd-desc">
-							Demande à un joueur de se téléporter sur TOI.
-						</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/tpaccept</code>
-							<span class="tag tp">Accepter</span>
-						</div>
-						<p class="cmd-desc">
-							Accepte la dernière demande reçue. (Ou <code>/tpadeny</code> pour
-							refuser).
-						</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/tpacencel [joueur]</code>
-							<span class="tag tp">Annuler</span>
-						</div>
-						<p class="cmd-desc">
-							Annule la demande que tu viens d'envoyer (si tu t'es trompé).
-						</p>
+						<p class="cmd-desc">Demande à un joueur de venir sur vous.</p>
 					</div>
 				</section>
 
-				<!-- BACK & GRAVE -->
-				<section id="back">
-					<h2><i class="ph-duotone ph-skull"></i> Mort & Retour</h2>
+				<section id="homes">
+					<h2><i class="ph-duotone ph-house"></i> Homes & Back</h2>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home set [nom]</code>
+							<span class="tag home">Créer</span>
+						</div>
+						<p class="cmd-desc">Définit un point de maison ici.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home tp [nom]</code>
+							<span class="tag home">Aller</span>
+						</div>
+						<p class="cmd-desc">Téléporte à la maison.</p>
+					</div>
 
 					<div class="command-card">
 						<div class="cmd-header">
@@ -100,7 +274,7 @@
 							<span class="tag death">Retour</span>
 						</div>
 						<p class="cmd-desc">
-							Te ramène à ta position précédente (avant ton dernier TP).
+							Retourne à la position précédente (mort ou TP).
 						</p>
 					</div>
 
@@ -110,101 +284,8 @@
 							<span class="tag death">Tombe</span>
 						</div>
 						<p class="cmd-desc">
-							Te téléporte directement sur le lieu de ta dernière mort.
-						</p>
-					</div>
-				</section>
-
-				<!-- HOMES -->
-				<section id="sethome">
-					<h2><i class="ph-duotone ph-house"></i> Gestion des Homes</h2>
-					<p>TPATools offre un système de homes avancé.</p>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home set [nom]</code>
-							<span class="tag home">Créer</span>
-						</div>
-						<p class="cmd-desc">Définit ta position actuelle comme un home.</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home tp [nom]</code>
-							<span class="tag home">Aller</span>
-						</div>
-						<p class="cmd-desc">Te téléporte à un home spécifique.</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home list</code>
-							<span class="tag home">Liste</span>
-						</div>
-						<p class="cmd-desc">Affiche la liste de tous tes homes.</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home rename [vieux] [nouveau]</code>
-							<span class="tag home">Renommer</span>
-						</div>
-						<p class="cmd-desc">Change le nom d'un home existant.</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home remove [nom]</code>
-							<span class="tag home">Supprimer</span>
-						</div>
-						<p class="cmd-desc">Supprime définitivement un home.</p>
-					</div>
-				</section>
-
-				<!-- PARTAGE -->
-				<section id="share">
-					<h2><i class="ph-duotone ph-share-network"></i> Partage de Homes</h2>
-					<p>Fonctionnalité unique de TPATools : donnez accès à vos bases.</p>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home share [home] [joueur]</code>
-							<span class="tag share">Partager</span>
-						</div>
-						<p class="cmd-desc">
-							Donne l'accès à un de tes homes à un ami spécifique.
-						</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home unshare [home] [joueur]</code>
-							<span class="tag share">Retirer</span>
-						</div>
-						<p class="cmd-desc">
-							Retire l'accès. (Ne pas mettre de joueur retire l'accès à tout le
-							monde).
-						</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home otherhome [joueur:home]</code>
-							<span class="tag share">Visiter</span>
-						</div>
-						<p class="cmd-desc">
-							Te téléporte au home d'un ami (s'il l'a partagé avec toi ou rendu
-							public).
-						</p>
-					</div>
-
-					<div class="command-card">
-						<div class="cmd-header">
-							<code>/home public [nom]</code>
-							<span class="tag share">Public</span>
-						</div>
-						<p class="cmd-desc">
-							Rend un home accessible à <strong>tout le serveur</strong>.
+							Si le mod de tombe est compatible, téléporte à votre dernière
+							mort.
 						</p>
 					</div>
 				</section>

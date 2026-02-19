@@ -216,29 +216,81 @@ code.copied::after {
 	top: -35px;
 }
 
-/* --- TAGS --- */
+/* --- TAGS (BADGES) --- */
 .tag {
 	font-size: 0.75rem;
 	text-transform: uppercase;
-	padding: 4px 8px;
-	border-radius: 4px;
-	font-weight: 600;
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border: 1px solid transparent; /* Prépare la bordure */
 }
+
+/* Couleurs Spécifiques */
+
+/* Essential (Violet - Thème) */
+.tag.essential {
+	background: rgba(140, 92, 231, 0.15);
+	color: #c4a7ff;
+	border-color: rgba(140, 92, 231, 0.3);
+}
+
+/* Map (Bleu Cyan) */
+.tag.map {
+	background: rgba(0, 230, 184, 0.1);
+	color: #00e6b8;
+	border-color: rgba(0, 230, 184, 0.25);
+}
+
+/* Quests (Orange/Or) */
+.tag.quests {
+	background: rgba(255, 159, 67, 0.1);
+	color: #ffbf85;
+	border-color: rgba(255, 159, 67, 0.3);
+}
+
+/* Claim (Vert) */
+.tag.claim {
+	background: rgba(46, 213, 115, 0.1);
+	color: #2ed573;
+	border-color: rgba(46, 213, 115, 0.3);
+}
+
+/* Team (Bleu Roi) */
+.tag.team {
+	background: rgba(55, 66, 250, 0.1);
+	color: #6c7bff; /* Un peu plus clair pour être lisible sur fond noir */
+	border-color: rgba(55, 66, 250, 0.3);
+}
+
+/* Voice (Rouge/Rose) */
+.tag.voice {
+	background: rgba(255, 71, 87, 0.1);
+	color: #ff6b81;
+	border-color: rgba(255, 71, 87, 0.3);
+}
+
+/* TPA / TP (Orange) */
 .tag.tp {
 	background: rgba(255, 159, 67, 0.1);
 	color: #ff9f43;
+	border-color: rgba(255, 159, 67, 0.3);
 }
+
+/* Home (Cyan/Bleu) */
 .tag.home {
-	background: rgba(0, 230, 184, 0.1);
-	color: var(--accent);
+	background: rgba(0, 210, 211, 0.1);
+	color: #00d2d3;
+	border-color: rgba(0, 210, 211, 0.3);
 }
-.tag.share {
-	background: rgba(84, 160, 255, 0.1);
-	color: #54a0ff;
-}
+
+/* Death / Grave (Rouge sombre) */
 .tag.death {
-	background: rgba(255, 107, 107, 0.1);
-	color: #ff6b6b;
+	background: rgba(255, 71, 87, 0.1);
+	color: #ff4757;
+	border-color: rgba(255, 71, 87, 0.3);
 }
 
 /* --- RESPONSIVE --- */

@@ -116,6 +116,23 @@ nav {
 	background: rgba(140, 92, 231, 0.1);
 }
 
+.nav-link {
+	color: var(--text-muted);
+	text-decoration: none;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	transition: color 0.2s;
+	font-size: 0.95rem;
+}
+.nav-link:hover {
+	color: var(--primary);
+}
+.nav-link i {
+	font-size: 1.1rem;
+}
+
 /* =========================================
    4. COMPONENTS (Buttons, Cards, Badges)
    ========================================= */
