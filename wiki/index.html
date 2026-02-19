@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Wiki • Commandes & Guides</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Polices & Icônes -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+		<!-- Lien vers ton fichier CSS séparé -->
+		<link rel="stylesheet" href="../assets/css/wiki.css" />
+	</head>
+	<body>
+		<div class="wiki-container">
+			<!-- SIDEBAR GAUCHE -->
+			<aside class="sidebar">
+				<a href="../index.html" class="back-link">
+					<i class="ph-bold ph-arrow-left"></i> Retour à l'accueil
+				</a>
+
+				<div class="nav-title">Téléportation</div>
+				<ul class="nav-list">
+					<li><a href="#tpa" class="active">TPA (Demandes)</a></li>
+					<li><a href="#back">Back & Grave</a></li>
+				</ul>
+
+				<div class="nav-title">Homes (Maisons)</div>
+				<ul class="nav-list">
+					<li><a href="#sethome">Créer & Gérer</a></li>
+					<li><a href="#share">Partager des Homes</a></li>
+				</ul>
+			</aside>
+
+			<!-- CONTENU DROITE -->
+			<main class="content">
+				<h1>Wiki Serveur</h1>
+				<span class="subtitle">Toutes les commandes du mod TPATools.</span>
+
+				<!-- TPA -->
+				<section id="tpa">
+					<h2><i class="ph-duotone ph-paper-plane-tilt"></i> Demandes de TP</h2>
+					<p>Pour rejoindre vos amis ou les faire venir à vous.</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/tpa [joueur]</code>
+							<span class="tag tp">Aller vers</span>
+						</div>
+						<p class="cmd-desc">
+							Envoie une demande pour te téléporter sur un joueur.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/tpahere [joueur]</code>
+							<span class="tag tp">Faire venir</span>
+						</div>
+						<p class="cmd-desc">
+							Demande à un joueur de se téléporter sur TOI.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/tpaccept</code>
+							<span class="tag tp">Accepter</span>
+						</div>
+						<p class="cmd-desc">
+							Accepte la dernière demande reçue. (Ou <code>/tpadeny</code> pour
+							refuser).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/tpacencel [joueur]</code>
+							<span class="tag tp">Annuler</span>
+						</div>
+						<p class="cmd-desc">
+							Annule la demande que tu viens d'envoyer (si tu t'es trompé).
+						</p>
+					</div>
+				</section>
+
+				<!-- BACK & GRAVE -->
+				<section id="back">
+					<h2><i class="ph-duotone ph-skull"></i> Mort & Retour</h2>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/back</code>
+							<span class="tag death">Retour</span>
+						</div>
+						<p class="cmd-desc">
+							Te ramène à ta position précédente (avant ton dernier TP).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/grave</code>
+							<span class="tag death">Tombe</span>
+						</div>
+						<p class="cmd-desc">
+							Te téléporte directement sur le lieu de ta dernière mort.
+						</p>
+					</div>
+				</section>
+
+				<!-- HOMES -->
+				<section id="sethome">
+					<h2><i class="ph-duotone ph-house"></i> Gestion des Homes</h2>
+					<p>TPATools offre un système de homes avancé.</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home set [nom]</code>
+							<span class="tag home">Créer</span>
+						</div>
+						<p class="cmd-desc">Définit ta position actuelle comme un home.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home tp [nom]</code>
+							<span class="tag home">Aller</span>
+						</div>
+						<p class="cmd-desc">Te téléporte à un home spécifique.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home list</code>
+							<span class="tag home">Liste</span>
+						</div>
+						<p class="cmd-desc">Affiche la liste de tous tes homes.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home rename [vieux] [nouveau]</code>
+							<span class="tag home">Renommer</span>
+						</div>
+						<p class="cmd-desc">Change le nom d'un home existant.</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home remove [nom]</code>
+							<span class="tag home">Supprimer</span>
+						</div>
+						<p class="cmd-desc">Supprime définitivement un home.</p>
+					</div>
+				</section>
+
+				<!-- PARTAGE -->
+				<section id="share">
+					<h2><i class="ph-duotone ph-share-network"></i> Partage de Homes</h2>
+					<p>Fonctionnalité unique de TPATools : donnez accès à vos bases.</p>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home share [home] [joueur]</code>
+							<span class="tag share">Partager</span>
+						</div>
+						<p class="cmd-desc">
+							Donne l'accès à un de tes homes à un ami spécifique.
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home unshare [home] [joueur]</code>
+							<span class="tag share">Retirer</span>
+						</div>
+						<p class="cmd-desc">
+							Retire l'accès. (Ne pas mettre de joueur retire l'accès à tout le
+							monde).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home otherhome [joueur:home]</code>
+							<span class="tag share">Visiter</span>
+						</div>
+						<p class="cmd-desc">
+							Te téléporte au home d'un ami (s'il l'a partagé avec toi ou rendu
+							public).
+						</p>
+					</div>
+
+					<div class="command-card">
+						<div class="cmd-header">
+							<code>/home public [nom]</code>
+							<span class="tag share">Public</span>
+						</div>
+						<p class="cmd-desc">
+							Rend un home accessible à <strong>tout le serveur</strong>.
+						</p>
+					</div>
+				</section>
+			</main>
+		</div>
+
+		<!-- Lien vers ton fichier JS séparé -->
+		<script src="../assets/js/wiki.js"></script>
+	</body>
+</html>
