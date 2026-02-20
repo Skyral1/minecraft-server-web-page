@@ -339,6 +339,7 @@ nav .btn-primary:hover {
 	margin-bottom: 24px;
 	background: linear-gradient(to right, #fff, #b4b4b4);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -348,6 +349,7 @@ nav .btn-primary:hover {
 	margin-bottom: 16px;
 	background: linear-gradient(to right, #fff, #b4b4b4);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -740,4 +742,22 @@ footer {
 		align-items: flex-start;
 		gap: 8px;
 	}
+}
+/* Style pour rendre le badge de statut cliquable et animé */
+.status-link {
+	text-decoration: none;
+	display: inline-block;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease;
+	border-radius: 6px; /* Ajuste selon ton design global */
+}
+
+.status-link:hover {
+	transform: translateY(-2px);
+}
+
+/* Assure que le pointeur change bien au survol */
+.status-badge {
+	cursor: pointer;
 }

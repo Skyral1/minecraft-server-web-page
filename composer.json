@@ -1,0 +1,15 @@
+{
+    "name": "skyral/mine-dev",
+    "description": "Site status",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Skyral",
+            "email": "thibault.soquette.pro@gmail.com"
+        }
+    ],
+    "require": {
+        "textalk/websocket": "^1.6",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
