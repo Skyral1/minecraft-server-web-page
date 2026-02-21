@@ -1,3 +1,5 @@
+// assets/js/live_stats.js
+
 function safeSetText(id, text) {
 	const el = document.getElementById(id);
 	if (el) el.innerText = text;
@@ -10,7 +12,7 @@ function safeSetStyle(id, styleProp, value) {
 
 // 1. Fonction appelée UNE SEULE FOIS pour lire la configuration
 function fetchServerConfig() {
-	fetch("../../php/server-config.php") // METS LE BON CHEMIN ICI
+	fetch("../php/server-config.php") // CORRIGÉ
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.success && data.config) {
@@ -37,7 +39,6 @@ function fetchServerConfig() {
 		.catch((err) => console.error("Erreur Fetch Config:", err));
 }
 
-// 2. Fonction appelée TOUTES LES SECONDES pour le direct
 // Fonction pour déterminer la couleur en fonction du pourcentage
 function getColorForPercentage(pct) {
 	if (pct < 60) return "#4ade80"; // Vert (OK)
@@ -45,8 +46,9 @@ function getColorForPercentage(pct) {
 	return "#ef4444"; // Rouge (Critique)
 }
 
+// 2. Fonction appelée TOUTES LES SECONDES pour le direct
 function fetchServerStats() {
-	fetch("../../php/server-stats.php") // Remets '/server-stats.php' si tu avais mis le slash
+	fetch("../php/server-stats.php") // CORRIGÉ
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.success) {
@@ -57,7 +59,6 @@ function fetchServerStats() {
 
 					safeSetText("cpu-val", cpuVal + " %");
 					safeSetStyle("cpu-bar", "width", cpuPct + "%");
-					// Nouvelle ligne pour la couleur :
 					safeSetStyle(
 						"cpu-bar",
 						"backgroundColor",
@@ -76,13 +77,11 @@ function fetchServerStats() {
 
 					safeSetText("ram-val", ramGo + " Go");
 					safeSetStyle("ram-bar", "width", Math.min(ramPct, 100) + "%");
-					// Nouvelle ligne pour la couleur :
 					safeSetStyle(
 						"ram-bar",
 						"backgroundColor",
 						getColorForPercentage(ramPct),
 					);
-
 					safeSetText("ram-detail", `${ramGo} Go / ${ramMaxGo} Go`);
 				}
 
@@ -99,13 +98,11 @@ function fetchServerStats() {
 
 					safeSetText("disk-val", diskGo + " Go");
 					safeSetStyle("disk-bar", "width", Math.min(diskPct, 100) + "%");
-					// Nouvelle ligne pour la couleur :
 					safeSetStyle(
 						"disk-bar",
 						"backgroundColor",
 						getColorForPercentage(diskPct),
 					);
-
 					safeSetText("disk-detail", `${diskGo} Go / ${diskMaxGo} Go`);
 				}
 			} else {

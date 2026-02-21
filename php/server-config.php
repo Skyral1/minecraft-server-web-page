@@ -1,9 +1,9 @@
 <?php
-// server-config.php
+// php/server-config.php
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
-// Trouver le bon chemin vers l'autoload, peu importe d'où on l'appelle
+// Trouver le bon chemin vers l'autoload et le .env
 $autoloadPath = __DIR__ . '/../vendor/autoload.php';
 $envPath = __DIR__ . '/../';
 
@@ -26,17 +26,16 @@ if (!$sftpHost || !$sftpUser || !$sftpPass) {
 }
 
 // 1. URL SFTP pour le fichier avec cURL
-// Par défaut, le chemin sur Pterodactyl/MineStrator est à la racine de l'utilisateur FTP
 $sftpUrl = "sftp://{$sftpHost}:{$sftpPort}/server.properties";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $sftpUrl);
 curl_setopt($ch, CURLOPT_USERPWD, "{$sftpUser}:{$sftpPass}");
-// curl_setopt($ch, CURLOPT_SSH_AUTH_TYPES, CURLSSH_AUTH_PASSWORD);
+curl_setopt($ch, CURLOPT_PROTOCOLS, CURLPROTO_SFTP);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 5); // Timeout court pour ne pas bloquer
+curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 
-// Désactiver la vérification d'hôte SSH (souvent nécessaire sur les hébergeurs)
+// Désactiver la vérification d'hôte SSH
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
@@ -58,7 +57,6 @@ $properties = [];
 
 foreach ($lines as $line) {
     $line = trim($line);
-    // On ignore les commentaires et les lignes vides
     if (empty($line) || strpos($line, '#') === 0)
         continue;
 
@@ -68,9 +66,8 @@ foreach ($lines as $line) {
     }
 }
 
-// 3. Traduction pour l'affichage en français propre
+// 3. Traduction pour l'affichage
 $finalConfig = [
-    // La première lettre en majuscule, ex: survival -> Survival
     "Mode de jeu" => ucfirst($properties['gamemode'] ?? "Inconnu"),
     "Difficulté" => ucfirst($properties['difficulty'] ?? "Inconnue"),
     "Whitelist" => ($properties['white-list'] ?? "false") === "true" ? "Activée" : "Désactivée",
@@ -79,12 +76,11 @@ $finalConfig = [
     "Port" => $properties['server-port'] ?? "25565"
 ];
 
-// 4. (Bonus optionnel) Si tu veux ajouter le nom et IP en dur
-$finalConfig["Jeu"] = "Minecraft Forge"; // Modifié selon ta config
+$finalConfig["Jeu"] = "Minecraft Forge";
 $finalConfig["IP"] = "bmc4.strator.gg";
 
-// On renvoie le résultat JSON au Javascript
 echo json_encode([
     "success" => true,
     "config" => $finalConfig
 ]);
+?>

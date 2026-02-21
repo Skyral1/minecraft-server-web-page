@@ -1,5 +1,5 @@
 <?php
-// server-stats.php
+// php/server-stats.php
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
@@ -15,7 +15,6 @@ if (file_exists($envPath . '.env')) {
     Dotenv::createImmutable($envPath)->load();
 }
 
-
 $apiKey = $_ENV['MINESTRATOR_API_TOKEN'] ?? null;
 $serverId = $_ENV['MINESTRATOR_SERVER_ID'] ?? null;
 $apiUrl = $_ENV['MINESTRATOR_API_URL'] ?? "https://mine.sttr.io/server";
@@ -25,12 +24,12 @@ if (!$apiKey || !$serverId) {
     exit;
 }
 
-// 1. Appel HTTP pour obtenir l'URL WebSocket et le Token
+// 1. Appel HTTP pour obtenir l'URL WebSocket
 $ch = curl_init($apiUrl . "/" . $serverId);
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_TIMEOUT => 5,
-    CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
     CURLOPT_HTTPHEADER => [
         "authorization: Bearer " . trim($apiKey),
         "origin: https://minestrator.com"
@@ -44,7 +43,7 @@ curl_close($ch);
 $data = json_decode($response, true);
 
 if (!isset($data['api']['data']['websocket'])) {
-    echo json_encode(["error" => "Impossible d'obtenir les infos WebSocket", "details" => $data]);
+    echo json_encode(["error" => "Impossible d'obtenir les infos WebSocket"]);
     exit;
 }
 
@@ -53,13 +52,13 @@ $wsToken = $data['api']['data']['websocket']['token'];
 $ramMaxBytes = $data['api']['data']['mybox']['resources']['ram'] * 1024 * 1024 * 1024;
 $diskMaxBytes = ($data['api']['data']['mybox']['resources']['disk'] ?? 80) * 1024 * 1024 * 1024;
 
-// 2. Connexion WebSocket DEPUIS PHP
+// 2. Connexion WebSocket
 try {
     $client = new Client($wsUrl, [
         'timeout' => 5,
         'headers' => [
             'Origin' => 'https://minestrator.com',
-            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
         ]
     ]);
 
@@ -98,7 +97,7 @@ try {
             "disk_max_bytes" => $diskMaxBytes
         ]);
     } else {
-        echo json_encode(["error" => "Serveur éteint ou stats non reçues à temps", "status" => $serverStatus]);
+        echo json_encode(["error" => "Stats non reçues à temps", "status" => $serverStatus]);
     }
 } catch (\Exception $e) {
     echo json_encode(["error" => "Erreur WebSocket PHP", "message" => $e->getMessage()]);
