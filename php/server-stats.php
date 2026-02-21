@@ -3,13 +3,18 @@
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 
-require __DIR__ . '/vendor/autoload.php';
+// Trouver le bon chemin vers l'autoload
+$autoloadPath = __DIR__ . '/../vendor/autoload.php';
+$envPath = __DIR__ . '/../';
+
+require $autoloadPath;
 use Dotenv\Dotenv;
 use WebSocket\Client;
 
-if (file_exists(__DIR__ . '/.env')) {
-    Dotenv::createImmutable(__DIR__)->load();
+if (file_exists($envPath . '.env')) {
+    Dotenv::createImmutable($envPath)->load();
 }
+
 
 $apiKey = $_ENV['MINESTRATOR_API_TOKEN'] ?? null;
 $serverId = $_ENV['MINESTRATOR_SERVER_ID'] ?? null;

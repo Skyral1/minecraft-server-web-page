@@ -10,7 +10,7 @@ function safeSetStyle(id, styleProp, value) {
 
 // 1. Fonction appelée UNE SEULE FOIS pour lire la configuration
 function fetchServerConfig() {
-	fetch("../../server-config.php") // METS LE BON CHEMIN ICI
+	fetch("../../php/server-config.php") // METS LE BON CHEMIN ICI
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.success && data.config) {
@@ -46,7 +46,7 @@ function getColorForPercentage(pct) {
 }
 
 function fetchServerStats() {
-	fetch("../../server-stats.php") // Remets '/server-stats.php' si tu avais mis le slash
+	fetch("../../php/server-stats.php") // Remets '/server-stats.php' si tu avais mis le slash
 		.then((response) => response.json())
 		.then((data) => {
 			if (data.success) {

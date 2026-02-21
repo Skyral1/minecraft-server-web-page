@@ -761,3 +761,105 @@ footer {
 .status-badge {
 	cursor: pointer;
 }
+/* =========================================
+   8. CUSTOM SELECT & SCROLLBAR
+   ========================================= */
+
+.custom-select-wrapper {
+	width: 100%;
+	margin: 20px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.select-label {
+	color: var(--text-main);
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.select-container {
+	position: relative;
+	width: 100%;
+}
+
+/* Style principal du select */
+.custom-select {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 100%;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 14px 40px 14px 16px;
+	color: var(--text-main);
+	font-family: "Inter", sans-serif;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	outline: none;
+}
+
+/* Effet au survol et focus */
+.custom-select:hover,
+.custom-select:focus {
+	border-color: rgba(140, 92, 231, 0.5); /* var(--primary) avec opacité */
+	background: var(--surface-hover);
+	box-shadow: 0 0 0 3px rgba(140, 92, 231, 0.1);
+}
+
+/* Style des options générées par PHP */
+.custom-select option {
+	background-color: var(--surface);
+	color: var(--text-main);
+	padding: 12px;
+}
+
+.select-arrow {
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	transform: translateY(-50%);
+	color: var(--primary);
+	pointer-events: none;
+	font-size: 1.2rem;
+	transition: transform 0.2s ease;
+}
+
+.custom-select:focus + .select-arrow {
+	transform: translateY(-50%) rotate(180deg);
+}
+
+/* --- PERSONNALISATION DE LA SCROLLBAR --- */
+/* Pour que le select limite sa taille et affiche la scrollbar quand on l'ouvre (navigateurs WebKit) */
+.custom-select::-webkit-scrollbar {
+	width: 8px;
+	background-color: var(--surface);
+}
+
+.custom-select::-webkit-scrollbar-track {
+	background: rgba(255, 255, 255, 0.02);
+	border-left: 1px solid var(--border);
+}
+
+.custom-select::-webkit-scrollbar-thumb {
+	background: var(--primary); /* Violet de votre thème */
+	border-radius: 10px;
+}
+
+.custom-select::-webkit-scrollbar-thumb:hover {
+	background: #7d50d6;
+}
+
+/* Compatibilité Firefox */
+@supports (scrollbar-color: auto) {
+	.custom-select {
+		scrollbar-color: var(--primary) var(--surface);
+		scrollbar-width: thin;
+	}
+}
