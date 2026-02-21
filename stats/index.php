@@ -95,32 +95,6 @@
 			font-weight: 600;
 			font-family: "JetBrains Mono", monospace;
 		}
-
-		/* Liste des joueurs */
-		.players-grid {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 12px;
-			margin-top: 20px;
-		}
-
-		.player-card {
-			background: rgba(255, 255, 255, 0.05);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			padding: 8px 16px 8px 8px;
-			border-radius: 8px;
-			display: flex;
-			align-items: center;
-			gap: 12px;
-			color: #fff;
-			font-weight: 500;
-		}
-
-		.player-card img {
-			width: 32px;
-			height: 32px;
-			border-radius: 6px;
-		}
 	</style>
 </head>
 
@@ -176,26 +150,6 @@
 				</div>
 				<small id="disk-detail" style="color: var(--text-muted); display: block; margin-top: 10px">-- /
 					--</small>
-			</div>
-
-			<!-- JOUEURS EN LIGNE (Query) -->
-			<div class="stat-card wide" id="players-section">
-				<h3 style="
-							display: flex;
-							align-items: center;
-							gap: 8px;
-							margin-bottom: 5px;
-						">
-					<i class="ph-bold ph-users-three" style="color: var(--primary)"></i>
-					Joueurs Actuellement Connectés (<span id="players-count-title">0</span>)
-				</h3>
-				<p style="color: var(--text-muted); font-size: 0.9rem" id="players-status">
-					Interrogation du serveur en cours...
-				</p>
-
-				<div class="players-grid" id="players-grid">
-					<!-- Rempli par JS -->
-				</div>
 			</div>
 
 			<!-- PROPRIÉTÉS DU SERVEUR (API MineStrator) -->
