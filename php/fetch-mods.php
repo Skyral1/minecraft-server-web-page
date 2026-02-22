@@ -97,6 +97,59 @@ $output = [
 ];
 
 // ==========================================
+// FONCTION API MODRINTH
+// ==========================================
+function getModrinthDownloadUrl($filename) {
+    // 1. Extraire le nom du mod sans la version pour la recherche
+    $query = preg_replace('/\.jar$/i', '', $filename);
+    if (preg_match('/^([a-zA-Z0-9_\-]+?)(?:-[0-9]|-[vV]?[0-9]|-mc[0-9]|\+[0-9])/', $filename, $matches)) {
+        $query = $matches[1];
+    }
+    $query = str_replace(['_', '-'], ' ', $query);
+
+    // 2. Chercher le projet sur Modrinth (on prend le 1er résultat)
+    $searchUrl = "https://api.modrinth.com/v2/search?query=" . urlencode($query) . "&limit=1";
+    $ch = curl_init($searchUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, "BMC4-Server-Bot/1.0");
+    curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    if (!$response) return null;
+    $data = json_decode($response, true);
+    if (empty($data['hits'])) return null;
+
+    $projectId = $data['hits'][0]['project_id'];
+    
+    // 3. Récupérer toutes les versions de ce projet
+    $versionsUrl = "https://api.modrinth.com/v2/project/{$projectId}/version";
+    $chV = curl_init($versionsUrl);
+    curl_setopt($chV, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($chV, CURLOPT_USERAGENT, "BMC4-Server-Bot/1.0");
+    curl_setopt($chV, CURLOPT_TIMEOUT, 3);
+    $vResponse = curl_exec($chV);
+    curl_close($chV);
+    
+    if ($vResponse) {
+        $vData = json_decode($vResponse, true);
+        if (is_array($vData)) {
+            foreach ($vData as $version) {
+                if (isset($version['files'])) {
+                    foreach ($version['files'] as $file) {
+                        // 4. Si le nom du fichier correspond exactement, on a l'URL CDN !
+                        if ($file['filename'] === $filename) {
+                            return $file['url'];
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return null;
+}
+
+// ==========================================
 // NOTIFICATION DISCORD (avec anti-doublon)
 // ==========================================
 if ($discordWebhook && file_exists($cacheFile)) {
@@ -111,14 +164,14 @@ if ($discordWebhook && file_exists($cacheFile)) {
         if (count($addedMods) > 0 || count($removedMods) > 0) {
 
             // On calcule l'empreinte unique de la liste ACTUELLE
-            sort($currentModFiles); // Tri pour que l'ordre ne change pas le hash
+            sort($currentModFiles);
             $currentHash = md5(implode(',', $currentModFiles));
 
-            // On lit le dernier hash notifié (si le fichier existe)
+            // On lit le dernier hash notifié
             $hashFile = __DIR__ . '/last_notified_hash.txt';
             $lastNotifiedHash = file_exists($hashFile) ? trim(file_get_contents($hashFile)) : '';
 
-            // On n'envoie QUE si l'état est nouveau (hash différent)
+            // On n'envoie QUE si l'état est nouveau
             if ($currentHash !== $lastNotifiedHash) {
 
                 $embedFields = [];
@@ -126,9 +179,16 @@ if ($discordWebhook && file_exists($cacheFile)) {
                 if (count($addedMods) > 0) {
                     $addedText = "";
                     foreach ($addedMods as $mod) {
-                        // Remplacer l'URL ci-dessous par l'URL publique de téléchargement des mods si tu en as une.
-                        // Exemple: "https://bmc4.minesr.com/mods/"
-                        $downloadUrl = "https://bmc4.minesr.com/mods/" . rawurlencode($mod);
+                        $downloadUrl = "https://bmc4.minesr.com/mods/" . rawurlencode($mod); // Fallback
+                        
+                        // Si on ajoute un nombre raisonnable de mods (évite le timeout API)
+                        if (count($addedMods) <= 10) {
+                            $modrinthUrl = getModrinthDownloadUrl($mod);
+                            if ($modrinthUrl) {
+                                $downloadUrl = $modrinthUrl;
+                            }
+                        }
+                        
                         $addedText .= "✅ [`{$mod}`]({$downloadUrl})\n";
                     }
                     $embedFields[] = [
@@ -173,7 +233,6 @@ if ($discordWebhook && file_exists($cacheFile)) {
                 $discordHttpCode = curl_getinfo($chDiscord, CURLINFO_HTTP_CODE);
                 curl_close($chDiscord);
 
-                // On ne sauvegarde le nouveau hash QUE si Discord a bien reçu le message
                 if ($discordHttpCode === 204) {
                     file_put_contents($hashFile, $currentHash);
                 }
