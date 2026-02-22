@@ -125,8 +125,12 @@ if ($discordWebhook && file_exists($cacheFile)) {
 
                 if (count($addedMods) > 0) {
                     $addedText = "";
-                    foreach ($addedMods as $mod)
-                        $addedText .= "✅ `{$mod}`\n";
+                    foreach ($addedMods as $mod) {
+                        // Remplacer l'URL ci-dessous par l'URL publique de téléchargement des mods si tu en as une.
+                        // Exemple: "https://bmc4.minesr.com/mods/"
+                        $downloadUrl = "https://bmc4.minesr.com/mods/" . rawurlencode($mod);
+                        $addedText .= "✅ [`{$mod}`]({$downloadUrl})\n";
+                    }
                     $embedFields[] = [
                         "name" => "📥 Mods Ajoutés (" . count($addedMods) . ")",
                         "value" => substr($addedText, 0, 1024),
@@ -136,8 +140,9 @@ if ($discordWebhook && file_exists($cacheFile)) {
 
                 if (count($removedMods) > 0) {
                     $removedText = "";
-                    foreach ($removedMods as $mod)
+                    foreach ($removedMods as $mod) {
                         $removedText .= "❌ `{$mod}`\n";
+                    }
                     $embedFields[] = [
                         "name" => "🗑️ Mods Retirés (" . count($removedMods) . ")",
                         "value" => substr($removedText, 0, 1024),
@@ -152,7 +157,7 @@ if ($discordWebhook && file_exists($cacheFile)) {
                         [
                             "title" => "🔄 Mise à jour des Mods du Serveur !",
                             "color" => 9200359,
-                            "description" => "Le serveur a été scanné et des changements ont été détectés dans le dossier `mods/`.",
+                            "description" => "Le serveur a été scanné et des changements ont été détectés dans le dossier `mods/`.\n*Cliquez sur le nom d'un mod ajouté pour le télécharger.*",
                             "fields" => $embedFields,
                             "timestamp" => date("c")
                         ]
