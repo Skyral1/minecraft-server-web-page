@@ -333,6 +333,35 @@ nav .btn-primary:hover {
 	text-transform: none;
 }
 
+/* --- Meta List (Homepage glass-card infos) --- */
+.meta-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.meta-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0.95rem;
+}
+
+.meta-list li span:first-child {
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.meta-list li span:last-child,
+.meta-list li a {
+	color: var(--text-main);
+	font-weight: 600;
+	text-decoration: none;
+}
+
 /* =========================================
    6. SECTIONS (Hero, Features, Content)
    ========================================= */
