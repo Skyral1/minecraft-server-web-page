@@ -635,7 +635,187 @@ nav .btn-primary:hover {
 }
 
 /* =========================================
-   8. UTILITIES (Toast, Footers)
+   8. TUTORIAL PAGE
+   ========================================= */
+.tutorial-section {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding-bottom: 60px;
+}
+
+.step-card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	padding: 32px;
+	display: flex;
+	gap: 24px;
+	transition: border-color 0.3s ease;
+}
+
+.step-card:hover {
+	border-color: rgba(140, 92, 231, 0.3);
+}
+
+.step-number {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--primary);
+	background: rgba(140, 92, 231, 0.1);
+	border: 1px solid rgba(140, 92, 231, 0.25);
+	border-radius: 12px;
+	width: 52px;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.step-content {
+	flex: 1;
+}
+
+.step-content h2 {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.3rem;
+	margin-bottom: 12px;
+	color: var(--text-main);
+}
+
+.step-content p {
+	color: var(--text-muted);
+	font-size: 0.95rem;
+	line-height: 1.6;
+}
+
+/* --- Inline link --- */
+.inline-link {
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.2s;
+}
+
+.inline-link:hover {
+	color: #a87dff;
+	text-decoration: underline;
+}
+
+.inline-link i {
+	font-size: 0.85em;
+	vertical-align: middle;
+}
+
+/* --- Checklist --- */
+.checklist {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.checklist li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--text-muted);
+	font-size: 0.95rem;
+}
+
+.checklist li i {
+	color: var(--accent);
+	font-size: 1.2rem;
+	flex-shrink: 0;
+}
+
+/* --- Server Box (step 4) --- */
+.server-box {
+	background: rgba(0, 0, 0, 0.25);
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 20px;
+	margin-top: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.server-info-row {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.server-info-row .label {
+	color: var(--text-muted);
+	font-size: 0.9rem;
+	min-width: 120px;
+}
+
+.server-info-row .value {
+	color: var(--text-main);
+	font-weight: 600;
+	font-size: 0.95rem;
+}
+
+/* --- Substep --- */
+.substep {
+	background: rgba(255, 255, 255, 0.02);
+	border-left: 3px solid var(--primary);
+	border-radius: 0 10px 10px 0;
+	padding: 16px;
+	margin-top: 16px;
+	font-size: 0.95rem;
+	color: var(--text-muted);
+}
+
+.substep strong {
+	color: var(--text-main);
+	font-size: 1rem;
+}
+
+/* --- Help Section --- */
+.help-section {
+	padding-bottom: 80px;
+}
+
+.help-card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	padding: 48px 32px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	transition: border-color 0.3s ease;
+}
+
+.help-card:hover {
+	border-color: rgba(140, 92, 231, 0.3);
+}
+
+.help-card h3 {
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.5rem;
+	color: var(--text-main);
+}
+
+.help-card p {
+	color: var(--text-muted);
+	font-size: 1rem;
+	max-width: 420px;
+	line-height: 1.6;
+}
+
+/* =========================================
+   9. UTILITIES (Toast, Footers)
    ========================================= */
 footer {
 	border-top: 1px solid var(--border);
@@ -683,7 +863,7 @@ footer {
 }
 
 /* =========================================
-   9. RESPONSIVE
+   10. RESPONSIVE
    ========================================= */
 @media (max-width: 960px) {
 	.hero {
@@ -718,5 +898,14 @@ footer {
 	}
 	.nav-links {
 		gap: 12px;
+	}
+	.step-card {
+		flex-direction: column;
+		gap: 16px;
+	}
+	.server-info-row {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
 	}
 }
